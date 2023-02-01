@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Answer for 2nd and 3rd question</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Names</th>
+                <th>Regions</th>
+                <th>Sub-region</th>
+                <th>Populations</th>
+                <th>flag</th>
+            </tr> 
+        </thead>
+        <tbody id="result">
+
+        </tbody>
+    </table>
+    <script>
+        $.ajax({
+            url :"https://restcountries.com/v2/all",
+            type: "get",
+            success :function(data){
+                var rs="";
+                for(i in data){
+                    rs+="<tr>";
+                    rs+="<td>"+data[i].name+"</td>";
+                    rs+="<td>"+data[i].region+"</td>";
+                    rs+="<td>"+data[i].subregion+"</td>";
+                    rs+="<td>"+data[i].population+"</td>";
+                    rs+="<td><img src='"+data[i].flag+"'style ='height:100px;width:100%'></td>"
+                    rs+="<tr>";
+                }
+                document.getElementById("result").innerHTML =rs;
+            }
+            
+        })
+
+          </script>
+</body>
+</html>
